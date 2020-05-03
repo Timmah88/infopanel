@@ -1,0 +1,195 @@
+mqtt:
+  broker: 192.168.0.142
+ #port: 8883
+  port: 1883
+  client_id: infopanel
+  keepalive: 180
+  username: user
+  password: Password
+ #certificate: /etc/ssl/certs/DST_Root_CA_X3.pem
+  topic: infopanel/screen/#
+
+RGBMatrix:
+   led-rows: 64
+   led-cols: 128
+   led-chain: 1
+   led-parallel: 1
+   led-pwm-bits: 11
+   led-brightness: 100
+   led-gpio-mapping: adafruit-hat-pwm
+   led-scan-mode: 1
+   led-pwm-lsb-nanoseconds: 130
+   led-show-refresh: false
+   led-slowdown-gpio: 3
+   led-no-hardware-pulse: false
+DummyMatrix:
+
+sprites: 
+  I90:
+      type: Duration
+      label: I90
+      low_val: 13.0
+      high_val: 23.0
+      data_label: travel_time_i90
+  WA520:
+      type: Duration
+      label: 520
+      low_val: 13.0
+      high_val: 23.0
+      data_label: travel_time_520
+  daily_high: 
+      type: Temperature
+      label: H
+      low_val: -15
+      high_val: 28
+      data_label: daily_high
+  daily_low: 
+      type: Temperature
+      label: L
+      low_val: -15
+      high_val: 28
+      data_label: daily_low
+  current: 
+      type: Temperature
+      label: C
+      low_val: -15
+      high_val: 28
+      data_label: current_temp
+  vehicle:
+      type: FancyText
+      text: VROOM!
+      pallete:
+         text:
+            - 100
+            - 100
+            - 255
+  scroll:
+      type: DynamicFancyText
+      text: Forellenvijver Heioord!
+      dx: -1
+      ticks_per_movement: 3
+      font_name: 9x15.bdf
+      data_label: DynamicFancyText  
+  giraffe2:
+      type: Sprite
+      ticks_per_frame: 3
+      dx: 1
+      pallete: 
+         1: 
+            - 255
+            - 0
+            - 0
+         2: 
+            - 0
+            - 0
+            - 255
+      frames:
+        - 00010
+          00011
+          00020
+          00010
+          00020
+          00010
+          00020
+          00110
+          01210
+          12120
+          10010
+          10001
+          10001
+
+        - 00100
+          00110
+          00020
+          00010
+          00020
+          00010
+          00020
+          00110
+          01210
+          12120
+          10010
+          10010
+          01100
+  flag: 
+      type: AnimatedGif
+      path: /etc/infopanel/gifs/Hei4.gif
+  cat: 
+      type: AnimatedGif
+      path: /etc/infopanel/gifs/Hei4.gif
+  hypnotoad:
+      type: AnimatedGif
+      path: /etc/infopanel/gifs/Hei4.gif
+scenes:
+  #flag:
+      #type: AnimatedGif
+      #path: /etc/infopanel/gifs/Hei4.gif
+  #cat:
+      #type: AnimatedGif
+      #path: /etc/infopanel/gifs/Hei4.gif
+  #hypnotoad:
+      #type: AnimatedGif
+      #path: /etc/infopanel/gifs/Hei4.gif
+  giraffes:
+      type: Giraffes
+      extra_phrases:
+        - I90
+        - WA520
+        - daily_high
+        - daily_low
+        - current
+      extra_phrase_frequency: 4
+  #welcome:
+      #type: welcome
+  time: 
+      type: Time
+  traffic:
+      sprites: 
+        - I90: 
+            x: 0
+            y: 8
+        - WA520:
+            x: 0
+            y: 16
+        - daily_high:
+            x: 33
+            y: 8
+        - daily_low: 
+            x: 33
+            y: 16
+        - current:
+            x: 33 
+            y: 24
+        - vehicle: 
+            x: 0 
+            y: 24
+        - scroll: 
+            x: 0 
+            y: 64
+        #- time: 
+            #x: 50
+            #y: 16
+  giraffe2:
+       sprites: 
+         - giraffe2:
+             y: 10 
+       
+modes: 
+  morning: 
+    #- giraffes:
+        #duration: 15
+        #brightness: 70
+    - traffic:
+        duration: 20
+    - time:
+        duration: 20
+    - giraffe2:
+        duration: 20
+    #- welcome:
+        #duration: 20
+
+   
+
+global:
+    font_dir: /home/pi/rpi-rgb-led-matrix/fonts
+    default_mode: morning
