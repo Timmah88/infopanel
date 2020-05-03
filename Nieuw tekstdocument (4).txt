@@ -1,0 +1,17 @@
+/usr/local/lib/python2.7/dist-packages/infopanel-0.1-py2.7.egg/infopanel/config.py:68: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  config = yaml.load(configfile)
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/usr/local/lib/python2.7/dist-packages/infopanel-0.1-py2.7.egg/infopanel/__main__.py", line 4, in <module>
+    driver.run()
+  File "/usr/local/lib/python2.7/dist-packages/infopanel-0.1-py2.7.egg/infopanel/driver.py", line 229, in run
+    conf = config.load_config_yaml(conf_file)
+  File "/usr/local/lib/python2.7/dist-packages/infopanel-0.1-py2.7.egg/infopanel/config.py", line 69, in load_config_yaml
+    config = SCHEMA(config)
+  File "build/bdist.linux-armv7l/egg/voluptuous/schema_builder.py", line 272, in __call__
+  File "build/bdist.linux-armv7l/egg/voluptuous/schema_builder.py", line 594, in validate_dict
+  File "build/bdist.linux-armv7l/egg/voluptuous/schema_builder.py", line 432, in validate_mapping
+voluptuous.error.MultipleInvalid: not a valid value for dictionary value @ data['scenes']['cat']['type']
