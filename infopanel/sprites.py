@@ -608,7 +608,48 @@ class AnimatedGif(BaseImage):
         """Height of the sprite."""
         _width, height = self.frame.size
         return height
+        
+class DayTime(FancyText):
+	
 
+    CONF = FancyText.CONF.extend ({vol.Optional('strftime', default= '%I:%M:%S %P'): str})
+
+    def __init__(self, max_x, max_y, data_source):
+        """Construct a sprite."""
+        FancyText.__init__(self, max_x, max_y, data_source=data_source)
+        self.last_val = None
+        self.value = None
+        self.now = None
+        self.text = None
+        self.pallete = {'text':[0, 255, 255]}
+        self.strftime = None
+        
+    def apply_config(self, conf):
+        """Validate and apply configuration to this sprite."""
+        conf = FancyText.apply_config(self, conf)
+        self._make_text()
+        return conf 
+        
+    def _make_text(self):
+
+        """Draw the current time."""
+        self.now = datetime.datetime.now()
+        self.text = self.now.strftime(self.strftime)
+        self.last_val = self.text
+        DayTime.add(self, self.text, self.pallete['text'])    
+                                                   
+    def update_value(self):
+        """Update, but only if the value has changed."""
+        val = self.value() if callable(self.value) else self.value  # pylint: disable=not-callable
+        if val != self.last_val:
+            # only do lookup when things change for speed.
+            self.clear()
+            self._make_text()
+
+    def render(self, display):
+        """Render a frame and advance."""
+        self.update_value()
+        return FancyText.render(self, display)
 
 class Reddit(FancyText):
     """The titles of some top posts in various subreddits."""
