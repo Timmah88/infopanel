@@ -69,7 +69,24 @@ sprites:
       dx: -1
       ticks_per_movement: 3
       font_name: 9x15.bdf
-      data_label: DynamicFancyText  
+      data_label: DynamicFancyText
+  scroll2:
+      type: DynamicFancyText
+      text: timmy test
+      dx: -1
+      ticks_per_movement: 3
+      font_name: 9x15.bdf
+      data_label: DynamicFancyText2
+  tijd:
+      type: FancyText
+      ticks_per_movement: 2
+      dx: -1
+      can_flip: false
+      pallete: 
+        text: 
+          - 255
+          - 0
+          - 255  
   giraffe2:
       type: Sprite
       ticks_per_frame: 3
@@ -121,7 +138,7 @@ sprites:
       type: AnimatedGif
       path: /etc/infopanel/gifs/Hei4.gif
 scenes:
-  #flag:
+  #cat:
       #type: AnimatedGif
       #path: /etc/infopanel/gifs/Hei4.gif
   #cat:
@@ -166,13 +183,16 @@ scenes:
         - scroll: 
             x: 0 
             y: 64
-        #- time: 
-            #x: 50
-            #y: 16
-  giraffe2:
+        - scroll2: 
+            x: 0 
+            y: 40
+        - tijd: 
+            x: 25 
+            y: 10
+  cat:
        sprites: 
-         - giraffe2:
-             y: 10 
+         - cat:
+             y: 0 
        
 modes: 
   morning: 
@@ -181,12 +201,13 @@ modes:
         #brightness: 70
     - traffic:
         duration: 20
+        brightness: 100
     - time:
         duration: 20
-    - giraffe2:
-        duration: 20
-    #- welcome:
+    #- giraffe2:
         #duration: 20
+    - cat:
+        duration: 20
 
    
 
