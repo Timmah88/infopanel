@@ -53,161 +53,359 @@ sprites:
       type: Temperature
       label: C
       low_val: -15
-      high_val: 28
+      high_val: 35
       data_label: current_temp
-  vehicle:
+  tekst:
       type: FancyText
-      text: VROOM!
+      text: Forellenvijver
       pallete:
          text:
-            - 100
-            - 100
+            - 255
+            - 0
+            - 0
+  tekst2:
+      type: FancyText
+      text: HEIOORD
+      pallete:
+         text:
+            - 255
+            - 0
+            - 0
+  tekst3:
+      type: FancyText
+      text: Verhuurd
+      font_name: 8x13.bdf
+      pallete:
+         text:
+            - 255
+            - 0
+            - 0
+  tekst4:
+      type: FancyText
+      text: Vijver 5
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 255
+            - 255
+  tekst5:
+      type: FancyText
+      text: Zalmforel vissen 23.-
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 255
+            - 255
+  tekst6:
+      type: FancyText
+      text: GEEN Zalmforel vissen
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 0
+            - 0
+  tekst7:
+      type: FancyText
+      text: Denk aan 1,5m
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 255
+            - 255
+  tekst8:
+      type: FancyText
+      text: Gevaarlijk ijs
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 0
+            - 0
+  tekst9:
+      type: FancyText
+      text: NIET BETREDEN!
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 0
+            - 0
+  tekst10:
+      type: FancyText
+      text: Vissen vanaf 1 Maart
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 255
+            - 255
+  tekst11:
+      type: FancyText
+      text: Kantine open
+      font_name: 6x13.bdf
+      pallete:
+         text:
+            - 255
+            - 255
             - 255
   scroll:
       type: DynamicFancyText
-      text: Forellenvijver Heioord!
-      dx: -1
-      ticks_per_movement: 3
-      font_name: 9x15.bdf
+      text: Heioord
+      font_name: 8x13.bdf
       data_label: DynamicFancyText
+      #label_color: red
+      value_color: red
   scroll2:
       type: DynamicFancyText
-      text: timmy test
-      dx: -1
-      ticks_per_movement: 3
-      font_name: 9x15.bdf
+      text: ZalmForel vissen 23.-
+      #dx: 1
+      #ticks_per_movement: 3
+      font_name: 6x13.bdf
       data_label: DynamicFancyText2
+      value_color: red
   tijd:
-      type: FancyText
-      ticks_per_movement: 2
-      dx: -1
+      type: DayTime
       can_flip: false
-      pallete: 
-        text: 
-          - 255
-          - 0
-          - 255  
-  giraffe2:
-      type: Sprite
-      ticks_per_frame: 3
-      dx: 1
-      pallete: 
-         1: 
+      strftime: '%H:%M:%S'
+      pallete:
+         text:
+            - 100
             - 255
-            - 0
-            - 0
-         2: 
-            - 0
-            - 0
+            - 100
+  datum:
+      type: DayTime
+      can_flip: false
+      strftime: '%d-%b'
+      pallete:
+         text:
+            - 100
             - 255
-      frames:
-        - 00010
-          00011
-          00020
-          00010
-          00020
-          00010
-          00020
-          00110
-          01210
-          12120
-          10010
-          10001
-          10001
-
-        - 00100
-          00110
-          00020
-          00010
-          00020
-          00010
-          00020
-          00110
-          01210
-          12120
-          10010
-          10010
-          01100
+            - 100
   flag: 
-      type: AnimatedGif
-      path: /etc/infopanel/gifs/Hei4.gif
-  cat: 
-      type: AnimatedGif
-      path: /etc/infopanel/gifs/Hei4.gif
-  hypnotoad:
-      type: AnimatedGif
-      path: /etc/infopanel/gifs/Hei4.gif
+      type: Image
+      path: /etc/infopanel/gifs/zalmvissen.png
+  logo: 
+      type: Image
+      path: /etc/infopanel/gifs/logohei4.png
+  zwart:
+      type: Image
+      path: /etc/infopanel/gifs/zwart.png
+  corona:
+      type: Image
+      path: /etc/infopanel/gifs/corona.png
+  ijs:
+      type: Image
+      path: /etc/infopanel/gifs/gevaarlijk ijs.png
+
 scenes:
-  #cat:
-      #type: AnimatedGif
-      #path: /etc/infopanel/gifs/Hei4.gif
-  #cat:
-      #type: AnimatedGif
-      #path: /etc/infopanel/gifs/Hei4.gif
-  #hypnotoad:
-      #type: AnimatedGif
-      #path: /etc/infopanel/gifs/Hei4.gif
-  giraffes:
-      type: Giraffes
-      extra_phrases:
-        - I90
-        - WA520
-        - daily_high
-        - daily_low
-        - current
-      extra_phrase_frequency: 4
   #welcome:
       #type: welcome
   time: 
       type: Time
-  traffic:
-      sprites: 
-        - I90: 
+  info:
+      sprites:
+        - datum:
             x: 0
-            y: 8
-        - WA520:
-            x: 0
-            y: 16
-        - daily_high:
-            x: 33
-            y: 8
-        - daily_low: 
-            x: 33
-            y: 16
-        - current:
-            x: 33 
-            y: 24
-        - vehicle: 
-            x: 0 
-            y: 24
-        - scroll: 
-            x: 0 
-            y: 64
-        - scroll2: 
-            x: 0 
-            y: 40
+            y: 6
         - tijd: 
+            x: 44
+            y: 6
+        - current:
+            x: 99 
+            y: 6
+        - tekst4: 
+            x: 41 
+            y: 27
+        - tekst5:
+            x: 1 
+            y: 42
+        - tekst3: 
+            x: 0 
+            y: 62
+        - scroll: 
+            x: 73 
+            y: 62
+  logo:
+      sprites: 
+         - logo:
+             y: 0
+         - datum:
+            x: 0
+            y: 6 
+         - tijd: 
+            x: 44 
+            y: 6
+         - current:
+            x: 99 
+            y: 6
+         - tekst: 
+            x: 50 
+            y: 25
+         - tekst2: 
+            x: 68 
+            y: 35
+         - tekst3: 
+            x: 0 
+            y: 62
+         - scroll: 
+            x: 73 
+            y: 62
+  zwart:
+      sprites: 
+         - zwart:
+             y: 0
+  corona:
+      sprites: 
+         - corona:
+             y: 0
+         - datum:
+            x: 0
+            y: 6
+         - tijd: 
+            x: 44 
+            y: 6
+         - current:
+            x: 99 
+            y: 6
+         - tekst7: 
             x: 25 
-            y: 10
-  cat:
-       sprites: 
-         - cat:
-             y: 0 
-       
+            y: 27
+         - tekst3: 
+            x: 0 
+            y: 62
+         - scroll: 
+            x: 73 
+            y: 62
+  zalm:
+      sprites:
+         - datum:
+            x: 0
+            y: 6
+         - tijd: 
+            x: 44
+            y: 6
+         - current:
+            x: 99 
+            y: 6
+         - tekst4: 
+            x: 41 
+            y: 27
+         - tekst6:
+            x: 1 
+            y: 42
+         - tekst3: 
+            x: 0 
+            y: 62
+         - scroll: 
+            x: 73 
+            y: 62
+  geenvis:
+      sprites: 
+         - logo:
+             y: 0
+         - datum:
+            x: 0
+            y: 6 
+         - tijd: 
+            x: 44 
+            y: 6
+         - current:
+            x: 99 
+            y: 6
+         - tekst: 
+            x: 50 
+            y: 25
+         - tekst2: 
+            x: 68 
+            y: 35
+         - tekst10: 
+            x: 4 
+            y: 62
+  corona2:
+      sprites: 
+         - corona:
+             y: 0
+         - datum:
+            x: 0
+            y: 6
+         - tijd: 
+            x: 44 
+            y: 6
+         - current:
+            x: 99 
+            y: 6
+         - tekst7: 
+            x: 25 
+            y: 27
+         - tekst11: 
+            x: 29 
+            y: 62
+  ijs:
+      sprites: 
+         - ijs:
+             y: 0
+         - datum:
+            x: 0
+            y: 6
+         - tijd: 
+            x: 44 
+            y: 6
+         - current:
+            x: 99 
+            y: 6
+         - tekst8:
+            x: 0 
+            y: 23
+         - tekst9:
+            x: 0 
+            y: 38
+         - tekst10: 
+            x: 4 
+            y: 62
 modes: 
   morning: 
     #- giraffes:
         #duration: 15
         #brightness: 70
-    - traffic:
+    - info:
         duration: 20
         brightness: 100
-    - time:
+    - corona:
         duration: 20
-    #- giraffe2:
-        #duration: 20
-    - cat:
+        brightness: 100
+    - logo:
         duration: 20
+        brightness: 100
+  nacht:
+    - zwart:
+        duration: 30
+        brightness: 0
+  geenzalm:
+    - zalm:
+        duration: 20
+        brightness: 100
+    - logo:
+        duration: 20
+        brightness: 100
+  winter:    
+    - geenvis:
+        duration: 20
+        brightness: 100
+    - corona2:
+        duration: 20
+        brightness: 100
+  gevaarlijk:
+    - ijs:
+        duration: 30
+        brightness: 100
+    - geenvis:
+        duration: 20
+        brightness: 100
+ 
 
    
 
