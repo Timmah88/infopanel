@@ -1,0 +1,21 @@
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=71108#:~:text=Re%3A%20stopping%20a%20python%20program,-Tue%20Mar%2004&text=If%20using%20ssh%20to%20get,(or%20F3%20to%20F6).
+
+Re: stopping a python program
+Quote
+Tue Mar 04, 2014 12:25 pm
+
+find the PID (Process ID) of your python script using the command (should be the second column)
+Code: Select all
+
+ps -ef | grep python
+Then kill it soothly first
+Code: Select all
+
+kill <PID found previously>
+And if does not work, then go for the ultimate stop
+Code: Select all
+
+kill -9 <PID found previously>
+If the program is still running then it means you are using the wrong PID
+Nothing can stop a kill -9 command :-)
